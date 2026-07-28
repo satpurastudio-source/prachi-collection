@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="600" height="900" role="img" aria-label="Siders">
+  <defs>
+    <linearGradient id="bg-siders" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0%" stop-color="#38294A" />
+      <stop offset="100%" stop-color="#150E1E" />
+    </linearGradient>
+    <radialGradient id="glow-siders" cx="50%" cy="40%" r="62%">
+      <stop offset="0%" stop-color="#E4CE93" stop-opacity="0.20" />
+      <stop offset="100%" stop-color="#E4CE93" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="jaali-siders" width="26" height="26" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="26" height="26" fill="none" />
+      <rect x="9" y="9" width="8" height="8" fill="none" stroke="#C8A24A" stroke-width="0.7" opacity="0.16" />
+    </pattern>
+  </defs>
+
+  <rect width="600" height="900" fill="url(#bg-siders)" />
+  <rect width="600" height="900" fill="url(#jaali-siders)" />
+  <rect width="600" height="900" fill="url(#glow-siders)" />
+
+  
+  <g stroke="#C8A24A" fill="none" stroke-width="2.00" opacity="0.85">
+    <path d="M 234.28571428571428 533.1428571428571
+             L 234.28571428571428 370.2857142857143
+             A 65.71428571428572 65.71428571428572 0 0 1 365.7142857142857 370.2857142857143
+             L 365.7142857142857 533.1428571428571 Z" opacity="0.55" />
+    <circle cx="300" cy="396" r="54.285714285714285" opacity="0.7" />
+    <circle cx="300" cy="396" r="18.571428571428573" opacity="0.9" />
+    <g opacity="0.5" stroke-width="1.29"><line x1="322.9" y1="396.0" x2="348.6" y2="396.0" /><line x1="319.8" y1="407.4" x2="342.1" y2="420.3" /><line x1="311.4" y1="415.8" x2="324.3" y2="438.1" /><line x1="300.0" y1="418.9" x2="300.0" y2="444.6" /><line x1="288.6" y1="415.8" x2="275.7" y2="438.1" /><line x1="280.2" y1="407.4" x2="257.9" y2="420.3" /><line x1="277.1" y1="396.0" x2="251.4" y2="396.0" /><line x1="280.2" y1="384.6" x2="257.9" y2="371.7" /><line x1="288.6" y1="376.2" x2="275.7" y2="353.9" /><line x1="300.0" y1="373.1" x2="300.0" y2="347.4" /><line x1="311.4" y1="376.2" x2="324.3" y2="353.9" /><line x1="319.8" y1="384.6" x2="342.1" y2="371.7" /></g>
+  </g>
+
+  <rect x="14" y="14" width="572" height="872" fill="none" stroke="#C8A24A" stroke-width="1" opacity="0.28" />
+
+</svg>

@@ -12,7 +12,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Prachi Bridal Hub — Where Royalty Meets Elegance" />
 <meta property="og:description" content="Bridal lehengas, sherwanis, party wear and wedding jewellery in Khandwa, M.P. On rent or to keep." />
-<meta property="og:image" content="assets/images/hero-portrait.svg" />
+<meta property="og:image" content="assets/images/catalog/col-men.jpg" />
 <meta property="og:locale" content="en_IN" />
 <meta name="twitter:card" content="summary_large_image" />
 
@@ -29,8 +29,8 @@
     .loader, .lightbox { display: none !important; }
     .reveal { opacity: 1 !important; transform: none !important; }
     .wa { transform: none !important; }
-    /* The lookbook grid is built by JS — point people at Instagram instead. */
-    .filters, #lookGrid { display: none !important; }
+    /* The lookbook tiles are built by JS — point people at Instagram instead. */
+    .filters, #lookGrid, #lookRail, .lookbook .rail-hint { display: none !important; }
     .lookbook__nojs { display: block !important; }
   </style>
 </noscript>
@@ -94,7 +94,7 @@
   <nav class="nav__links" aria-label="Primary">
     <a href="#house">The House</a>
     <a href="#collections">Collections</a>
-    <a href="#lookbook">Lookbook</a>
+    <a href="lookbook.html">Lookbook</a>
     <a href="#rent">Rent or Buy</a>
     <a href="#visit">Visit</a>
   </nav>
@@ -114,7 +114,7 @@
   <nav class="menu__links" aria-label="Mobile">
     <a href="#house"><em>01</em> The House</a>
     <a href="#collections"><em>02</em> Collections</a>
-    <a href="#lookbook"><em>03</em> Lookbook</a>
+    <a href="lookbook.html"><em>03</em> Lookbook</a>
     <a href="#rent"><em>04</em> Rent or Buy</a>
     <a href="#groom"><em>05</em> Groom's Corner</a>
     <a href="#visit"><em>06</em> Visit Us</a>
@@ -158,7 +158,7 @@
 
       <div class="hero__cta reveal" data-delay="2">
         <a class="btn btn--gold" href="https://wa.me/918989423736?text=Hello%20Prachi%20Bridal%20Hub%2C%20I%27d%20like%20to%20book%20a%20visit%20to%20see%20your%20collection." target="_blank" rel="noopener">Book a Visit</a>
-        <a class="btn btn--line" href="#lookbook">See the Lookbook</a>
+        <a class="btn btn--line" href="lookbook.html">See the Lookbook</a>
       </div>
 
       <ul class="hero__tags reveal" data-delay="3">
@@ -168,7 +168,7 @@
 
     <figure class="hero__frame reveal" data-delay="2">
       <div class="hero__frame-inner" data-parallax="0.06">
-        <img src="assets/images/hero-portrait.svg" alt="Bridal lehenga from the Prachi Collection" width="720" height="960" fetchpriority="high" />
+        <img src="assets/images/catalog/hero-portrait.svg" alt="Bridal lehenga from the Prachi Collection" width="720" height="960" fetchpriority="high" />
       </div>
       <figcaption>
         <span class="hero__frame-no">01</span>
@@ -201,10 +201,10 @@
   <div class="wrap house__grid">
     <div class="house__media">
       <figure class="house__img house__img--tall reveal">
-        <img src="assets/images/story-01.svg" alt="Inside the Prachi Collection store in Khandwa" width="720" height="900" loading="lazy" />
+        <img src="assets/images/catalog/story-01.svg" alt="Inside the Prachi Collection store in Khandwa" width="720" height="900" loading="lazy" />
       </figure>
       <figure class="house__img house__img--sq reveal" data-delay="2">
-        <img src="assets/images/story-02.svg" alt="Wedding jewellery available with rentals" width="640" height="640" loading="lazy" />
+        <img src="assets/images/catalog/story-02.svg" alt="Wedding jewellery available with rentals" width="640" height="640" loading="lazy" />
       </figure>
     </div>
 
@@ -236,66 +236,62 @@
 
 <!-- ══════════════════ COLLECTIONS ══════════════════ -->
 <section class="collections section section--dark" id="collections">
- <div class="pin" id="pinCollections">
-  <div class="pin__stage">
-    <div class="wrap">
-      <header class="sec-head">
-        <p class="eyebrow reveal"><span class="num">02</span> Collections</p>
-        <h2 class="display display--xl reveal" data-delay="1">Five rooms,<br />one <em>occasion</em></h2>
-      </header>
-    </div>
+  <div class="wrap">
+    <header class="sec-head">
+      <p class="eyebrow reveal"><span class="num">02</span> Collections</p>
+      <h2 class="display display--xl reveal" data-delay="1">Five rooms,<br />one <em>occasion</em></h2>
+    </header>
+  </div>
 
-    <ul class="collections__list" id="collectionsList">
-      <li class="crow reveal" data-img="assets/images/col-bridal.svg">
-        <a href="#lookbook" data-filter="bridal">
-          <img class="crow__img" src="assets/images/col-bridal.svg" alt="" width="600" height="800" loading="lazy" />
+  <ul class="collections__list" id="collectionsList">
+      <li class="crow reveal">
+        <a href="lookbook.html?c=bridal">
+          <img class="crow__img" src="assets/images/catalog/col-bridal.svg" alt="" width="600" height="800" loading="lazy" />
           <span class="crow__no">01</span>
           <h3 class="crow__title">Bridal Wear</h3>
           <p class="crow__desc">Trending and traditional lehengas — Rajasthani, Gujarati, and the season's newest silhouettes. Non-bridal lehengas too.</p>
           <span class="crow__go" aria-hidden="true">↗</span>
         </a>
       </li>
-      <li class="crow reveal" data-img="assets/images/col-men.svg">
-        <a href="#lookbook" data-filter="men">
-          <img class="crow__img" src="assets/images/col-men.svg" alt="" width="600" height="800" loading="lazy" />
+      <li class="crow reveal">
+        <a href="lookbook.html?c=men">
+          <img class="crow__img" src="assets/images/catalog/col-men.jpg" alt="" width="600" height="800" loading="lazy" />
           <span class="crow__no">02</span>
           <h3 class="crow__title">Men's Wear</h3>
           <p class="crow__desc">Sherwanis, open jodhpuris, suits and blazers — with safa, crown, shoes and shawls to finish the look.</p>
           <span class="crow__go" aria-hidden="true">↗</span>
         </a>
       </li>
-      <li class="crow reveal" data-img="assets/images/col-party.svg">
-        <a href="#lookbook" data-filter="party">
-          <img class="crow__img" src="assets/images/col-party.svg" alt="" width="600" height="800" loading="lazy" />
+      <li class="crow reveal">
+        <a href="lookbook.html?c=party">
+          <img class="crow__img" src="assets/images/catalog/col-party.svg" alt="" width="600" height="800" loading="lazy" />
           <span class="crow__no">03</span>
           <h3 class="crow__title">Party Wear</h3>
           <p class="crow__desc">Gowns, indo-westerns and cocktail pieces for sangeet, reception and every night in between.</p>
           <span class="crow__go" aria-hidden="true">↗</span>
         </a>
       </li>
-      <li class="crow reveal" data-img="assets/images/col-siders.svg">
-        <a href="#lookbook" data-filter="siders">
-          <img class="crow__img" src="assets/images/col-siders.svg" alt="" width="600" height="800" loading="lazy" />
+      <li class="crow reveal">
+        <a href="lookbook.html?c=siders">
+          <img class="crow__img" src="assets/images/catalog/col-siders.svg" alt="" width="600" height="800" loading="lazy" />
           <span class="crow__no">04</span>
           <h3 class="crow__title">Siders</h3>
           <p class="crow__desc">For the family and friends standing beside the couple — coordinated outfits so the whole side photographs as one.</p>
           <span class="crow__go" aria-hidden="true">↗</span>
         </a>
       </li>
-      <li class="crow reveal" data-img="assets/images/col-jewellery.svg">
-        <a href="#lookbook" data-filter="jewellery">
-          <img class="crow__img" src="assets/images/col-jewellery.svg" alt="" width="600" height="800" loading="lazy" />
+      <li class="crow reveal">
+        <a href="lookbook.html?c=jewellery">
+          <img class="crow__img" src="assets/images/catalog/col-jewellery.svg" alt="" width="600" height="800" loading="lazy" />
           <span class="crow__no">05</span>
           <h3 class="crow__title">Jewellery</h3>
           <p class="crow__desc">Full wedding sets — and with any dress rental, the jewellery comes bundled at no extra charge.</p>
           <span class="crow__go" aria-hidden="true">↗</span>
         </a>
       </li>
-    </ul>
+  </ul>
 
-    <p class="rail-hint" id="railHint" aria-hidden="true"><i></i> <span>Swipe for more</span></p>
-  </div>
- </div>
+  <p class="rail-hint" aria-hidden="true"><i></i> <span>Swipe to browse</span></p>
 </section>
 
 <!-- ══════════════════ LOOKBOOK ══════════════════ -->
@@ -312,19 +308,16 @@
       </p>
     </header>
 
-    <div class="filters reveal" role="tablist" aria-label="Filter lookbook">
-      <button class="filters__btn is-active" data-filter="all" role="tab" aria-selected="true">All</button>
-      <button class="filters__btn" data-filter="bridal" role="tab" aria-selected="false">Bridal</button>
-      <button class="filters__btn" data-filter="men" role="tab" aria-selected="false">Men's</button>
-      <button class="filters__btn" data-filter="party" role="tab" aria-selected="false">Party</button>
-      <button class="filters__btn" data-filter="siders" role="tab" aria-selected="false">Siders</button>
-      <button class="filters__btn" data-filter="jewellery" role="tab" aria-selected="false">Jewellery</button>
-    </div>
+  </div>
 
-    <div class="grid" id="lookGrid">
-      <!-- tiles injected by js/main.js from the LOOKS array -->
-    </div>
+  <!-- A handful of looks as a taster; the full gallery lives on its own page
+       so the home page stays light on a phone connection. -->
+  <div class="look-rail" id="lookRail" data-featured="6">
+    <!-- tiles injected by js/main.js from the LOOKS array -->
+  </div>
+  <p class="rail-hint" aria-hidden="true"><i></i> <span>Swipe to browse</span></p>
 
+  <div class="wrap">
     <p class="lookbook__nojs">
       Our lookbook gallery needs JavaScript switched on. You can see every new
       piece as it arrives on
@@ -332,8 +325,9 @@
       or call us on <a class="link" href="tel:+918989423736">89894 23736</a>.
     </p>
 
-    <p class="lookbook__cta reveal">
-      Seen something you like? <a class="link" href="https://wa.me/918989423736?text=Hello%20Prachi%20Bridal%20Hub%2C%20I%20saw%20a%20piece%20on%20your%20website%20and%20would%20like%20to%20know%20more." target="_blank" rel="noopener">Message us on WhatsApp</a> and we'll set it aside for your visit.
+    <p class="lookbook__more reveal">
+      <a class="btn btn--gold" href="lookbook.html">See the full lookbook</a>
+      <span>All 20 looks, filtered by collection</span>
     </p>
   </div>
 </section>
@@ -376,7 +370,7 @@
     </div>
 
     <figure class="rent__img reveal" data-delay="2">
-      <img src="assets/images/rent-01.svg" alt="Rental collection at Prachi Bridal Hub" width="900" height="675" loading="lazy" />
+      <img src="assets/images/catalog/rent-01.svg" alt="Rental collection at Prachi Bridal Hub" width="900" height="675" loading="lazy" />
     </figure>
   </div>
 </section>
@@ -384,7 +378,7 @@
 <!-- ══════════════════ GROOM ══════════════════ -->
 <section class="groom" id="groom">
   <figure class="groom__bg" aria-hidden="true">
-    <img src="assets/images/groom-01.svg" alt="" width="1440" height="810" loading="lazy" data-parallax="0.05" />
+    <img src="assets/images/catalog/groom-01.jpg" alt="" width="1440" height="810" loading="lazy" data-parallax="0.05" />
   </figure>
   <div class="wrap">
    <div class="groom__inner">
@@ -470,11 +464,11 @@
     <div class="foot__cols">
       <div>
         <h4>Collections</h4>
-        <a href="#lookbook">Bridal Wear</a>
+        <a href="lookbook.html?c=bridal">Bridal Wear</a>
         <a href="#lookbook">Men's Wear</a>
-        <a href="#lookbook">Party Wear</a>
-        <a href="#lookbook">Siders</a>
-        <a href="#lookbook">Jewellery</a>
+        <a href="lookbook.html?c=party">Party Wear</a>
+        <a href="lookbook.html?c=siders">Siders</a>
+        <a href="lookbook.html?c=jewellery">Jewellery</a>
       </div>
       <div>
         <h4>Visit</h4>
@@ -527,7 +521,7 @@
   <button class="lightbox__close" id="lbClose" aria-label="Close">&times;</button>
   <button class="lightbox__nav lightbox__nav--prev" id="lbPrev" aria-label="Previous">&#8249;</button>
   <figure class="lightbox__stage">
-    <img id="lbImg" src="" alt="" />
+    <img id="lbImg" alt="" />
     <figcaption id="lbCap"></figcaption>
   </figure>
   <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Next">&#8250;</button>

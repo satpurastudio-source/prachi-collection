@@ -14,13 +14,19 @@ fixed thumb dock (Call · WhatsApp · Directions) instead of the desktop
 floating button.
 
 ```
-index.html          the whole site — one page
-css/style.css       all styling
-js/main.js          all behaviour (also holds the lookbook contents)
+index.html          home page
+lookbook.html       the full gallery, filterable by collection
+css/style.css       all styling, shared by both pages
+js/main.js          all behaviour, shared (also holds the lookbook contents)
 assets/images/      photography (currently generated placeholders)
 assets/favicon.svg  browser tab icon
 tools/              placeholder generator
 ```
+
+The gallery lives on its own page so the home page stays short and light —
+it carries a six-look teaser rail and a link through. The two pages share one
+stylesheet and one script; `js/main.js` detects which containers exist and
+only wires up what's on the page.
 
 ## Run it locally
 
@@ -73,6 +79,13 @@ look for `const LOOKS`. Each entry is:
 Add or remove entries and the grid, the filters and the lightbox all update
 automatically. Nothing else needs changing.
 
+The home page shows only the **first six** entries of that list as a teaser —
+controlled by `data-featured="6"` on `#lookRail` in `index.html`. Reorder
+`LOOKS` to change which six appear. `lookbook.html` always shows all of them.
+
+Deep links work: `lookbook.html?c=bridal` opens the page already filtered to
+that collection. That's how the collection cards on the home page link through.
+
 ### Opening hours
 
 Set in **two** places, and both must agree:
@@ -99,20 +112,15 @@ block. The address and map link are in the Visit section and the footer.
 - **`?shot=1`** — add it to the URL (`index.html?shot=1`) to freeze the page in
   its final state: no loader, no entrance animations, all images loaded. Useful
   for screenshots and for checking layout without waiting for scroll animations.
-- **The pinned Collections section.** That section holds still while the cards
-  travel sideways, then releases and the page scrolls on. It works by giving
-  `.pin` a pixel height of *one viewport + the horizontal overflow*, sticking
-  `.pin__stage` to the top, and mapping scroll progress onto a `translateX` of
-  the card track (`measurePin`/`updatePin` in `js/main.js`).
-  - It is **progressive**: JS adds `.is-pinned` to `#collections`. Without JS,
-    or with reduced motion, or if the cards already fit, the same markup stays
-    a plain horizontal swipe rail. Never make the content depend on pinning.
-  - `body` uses `overflow-x: clip`, **not** `hidden`. `hidden` turns body into
-    a scroll container, which silently breaks `position: sticky` everywhere.
-    If sticky ever stops working, check that first.
-  - It re-measures only when the viewport *width* changes — mobile browsers
-    fire `resize` on every URL-bar show/hide, and re-measuring on those makes
-    the section jump mid-scroll.
+- **Horizontal rails are pure CSS.** Collections, the lookbook teaser, the
+  filters, the rent/buy cards and the groom chips are all native
+  `overflow-x: auto` scrollers. They move only when the visitor scrolls them
+  sideways and never touch vertical scrolling, so there is nothing to lag.
+  **Don't reintroduce JS-driven scroll effects here** — a scroll-pinned version
+  was tried and removed for being janky.
+- `body` uses `overflow-x: clip`, **not** `hidden`. `hidden` turns body into a
+  scroll container, which silently breaks `position: sticky` (the Rent section
+  image relies on it). If sticky ever stops working, check that first.
 - **`[hidden] { display: none !important; }`** near the top of the CSS is load
   bearing. `.menu` and `.lightbox` set `display: flex/grid`, which otherwise
   beats the browser's built-in `[hidden]` rule — leaving them as invisible

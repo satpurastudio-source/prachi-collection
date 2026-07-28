@@ -23,30 +23,34 @@
   /* ───────────────────────────────────────────────────────
      Lookbook contents.
      Edit this list to change the gallery — add an object, drop the
-     matching image in assets/images/, and the grid + filters + lightbox
+     matching image in assets/images/catalog/, and the grid + filters + lightbox
      all pick it up automatically.
+
+     `img` is the full filename, extension included, so a real photo can
+     replace any single placeholder: drop in men-01.jpg and change
+     "men-01.svg" to "men-01.jpg" on that one line.
      ─────────────────────────────────────────────────────── */
   const LOOKS = [
-    { img: "bridal-01", cat: "bridal", name: "Bridal Lehenga", tag: "Bridal" },
-    { img: "men-01", cat: "men", name: "Sherwani", tag: "Men's" },
-    { img: "party-01", cat: "party", name: "Evening Gown", tag: "Party" },
-    { img: "bridal-02", cat: "bridal", name: "Rajasthani Lehenga", tag: "Bridal" },
-    { img: "jewellery-01", cat: "jewellery", name: "Bridal Jewellery Set", tag: "Jewellery" },
-    { img: "siders-01", cat: "siders", name: "Siders' Coordinates", tag: "Siders" },
-    { img: "men-02", cat: "men", name: "Open Jodhpuri", tag: "Men's" },
-    { img: "bridal-03", cat: "bridal", name: "Gujarati Lehenga", tag: "Bridal" },
-    { img: "party-02", cat: "party", name: "Indo-Western", tag: "Party" },
-    { img: "bridal-04", cat: "bridal", name: "Reception Lehenga", tag: "Bridal" },
-    { img: "men-03", cat: "men", name: "Safa & Crown", tag: "Men's" },
-    { img: "jewellery-02", cat: "jewellery", name: "Kundan Set", tag: "Jewellery" },
-    { img: "siders-02", cat: "siders", name: "Family Sets", tag: "Siders" },
-    { img: "party-03", cat: "party", name: "Sangeet Wear", tag: "Party" },
-    { img: "bridal-05", cat: "bridal", name: "Non-Bridal Lehenga", tag: "Bridal" },
-    { img: "men-04", cat: "men", name: "Suit & Blazer", tag: "Men's" },
-    { img: "jewellery-03", cat: "jewellery", name: "Groom Accessories", tag: "Jewellery" },
-    { img: "party-04", cat: "party", name: "Cocktail Wear", tag: "Party" },
-    { img: "siders-03", cat: "siders", name: "Coordinated Siders", tag: "Siders" },
-    { img: "bridal-06", cat: "bridal", name: "Heavy Bridal Work", tag: "Bridal" },
+    { img: "bridal-01.svg", cat: "bridal", name: "Bridal Lehenga", tag: "Bridal" },
+    { img: "men-01.jpg", cat: "men", name: "Sherwani", tag: "Men's" },
+    { img: "party-01.svg", cat: "party", name: "Evening Gown", tag: "Party" },
+    { img: "bridal-02.svg", cat: "bridal", name: "Rajasthani Lehenga", tag: "Bridal" },
+    { img: "jewellery-01.svg", cat: "jewellery", name: "Bridal Jewellery Set", tag: "Jewellery" },
+    { img: "siders-01.svg", cat: "siders", name: "Siders' Coordinates", tag: "Siders" },
+    { img: "men-02.jpg", cat: "men", name: "Ivory & Gold Sherwani", tag: "Men's" },
+    { img: "bridal-03.svg", cat: "bridal", name: "Gujarati Lehenga", tag: "Bridal" },
+    { img: "party-02.svg", cat: "party", name: "Indo-Western", tag: "Party" },
+    { img: "bridal-04.svg", cat: "bridal", name: "Reception Lehenga", tag: "Bridal" },
+    { img: "men-03.svg", cat: "men", name: "Safa & Crown", tag: "Men's" },
+    { img: "jewellery-02.svg", cat: "jewellery", name: "Kundan Set", tag: "Jewellery" },
+    { img: "siders-02.svg", cat: "siders", name: "Family Sets", tag: "Siders" },
+    { img: "party-03.svg", cat: "party", name: "Sangeet Wear", tag: "Party" },
+    { img: "bridal-05.svg", cat: "bridal", name: "Non-Bridal Lehenga", tag: "Bridal" },
+    { img: "men-04.svg", cat: "men", name: "Suit & Blazer", tag: "Men's" },
+    { img: "jewellery-03.svg", cat: "jewellery", name: "Groom Accessories", tag: "Jewellery" },
+    { img: "party-04.svg", cat: "party", name: "Cocktail Wear", tag: "Party" },
+    { img: "siders-03.svg", cat: "siders", name: "Coordinated Siders", tag: "Siders" },
+    { img: "bridal-06.svg", cat: "bridal", name: "Heavy Bridal Work", tag: "Bridal" },
   ];
 
   /* ── Loader ─────────────────────────────────────────── */
@@ -173,78 +177,26 @@
     apply();
   }
 
-  /* ── Collections: pinned horizontal scroll ────────────────
-     The section sticks to the viewport while the card track is
-     translated sideways; once the track runs out, the section
-     releases and the page scrolls on normally.
+  /* Collections is a plain native horizontal rail — it moves only when the
+     visitor scrolls it sideways, and never intercepts vertical scrolling.
+     No JS drives it; see .collections__list in the stylesheet. */
 
-     Falls back to the plain CSS swipe rail if motion is reduced or
-     the track already fits — nothing here is required for the
-     content to be reachable. */
-  const section = $("#collections");
-  const pin = $("#pinCollections");
-  const track = $("#collectionsList");
-  const hint = $("#railHint");
-  let pinDistance = 0;
-  let lastPinWidth = 0;
+  /* ── Lookbook tiles ───────────────────────────────────────
+     Two hosts share this code:
+       #lookGrid — the full filterable grid on lookbook.html
+       #lookRail — a short swipeable teaser on the home page
+     Only one exists per page. */
+  const grid = $("#lookGrid") || $("#lookRail");
 
-  function measurePin() {
-    if (!pin || !track || calm) return;
-
-    // Measure in the un-pinned state so scrollWidth reports true content width.
-    section.classList.remove("is-pinned");
-    pin.style.height = "";
-    track.style.transform = "";
-
-    const overflow = track.scrollWidth - pin.clientWidth;
-    if (overflow <= 0) {
-      pinDistance = 0;
-      return; // Everything fits; leave it as a static row.
-    }
-
-    section.classList.add("is-pinned");
-    // Re-measure: pinned cards are sized to the stage height, so the
-    // track's width changes once .is-pinned applies.
-    pinDistance = Math.max(0, track.scrollWidth - pin.clientWidth);
-    if (pinDistance === 0) {
-      section.classList.remove("is-pinned");
-      return;
-    }
-
-    const stage = $(".pin__stage", pin);
-    pin.style.height = `${stage.offsetHeight + pinDistance}px`;
-    if (hint) $("span", hint).textContent = "Keep scrolling";
-    updatePin();
-  }
-
-  function updatePin() {
-    if (!pinDistance) return;
-    const top = pin.getBoundingClientRect().top;
-    const progress = Math.min(1, Math.max(0, -top / pinDistance));
-    track.style.transform = `translate3d(${(-progress * pinDistance).toFixed(1)}px, 0, 0)`;
-  }
-
-  if (pin) {
-    measurePin();
-    // Re-measure only when the width actually changes: mobile browsers fire
-    // resize on every URL-bar show/hide, and rebuilding on those causes jumps.
-    lastPinWidth = window.innerWidth;
-    window.addEventListener("resize", () => {
-      if (window.innerWidth === lastPinWidth) return;
-      lastPinWidth = window.innerWidth;
-      measurePin();
-    });
-    window.addEventListener("load", measurePin);
-  }
-
-  /* ── Lookbook grid ──────────────────────────────────── */
-  const grid = $("#lookGrid");
   if (grid) {
-    grid.innerHTML = LOOKS.map(
-      (look, i) => `
+    const limit = Number(grid.dataset.featured) || LOOKS.length;
+    // Keep the real index so the lightbox can look each tile back up.
+    const shown = LOOKS.map((look, i) => ({ look, i })).slice(0, limit);
+
+    grid.innerHTML = shown.map(({ look, i }) => `
       <figure class="tile reveal" data-cat="${look.cat}" data-index="${i}" tabindex="0" role="button"
               aria-label="View ${look.name}">
-        <img src="assets/images/${look.img}.svg" alt="${look.name} — Prachi Bridal Hub"
+        <img src="assets/images/catalog/${look.img}" alt="${look.name} — Prachi Bridal Hub"
              width="600" height="800" loading="lazy" decoding="async" />
         <figcaption><em>${look.name}</em><span>${look.tag}</span></figcaption>
       </figure>`
@@ -268,29 +220,27 @@
     }
   }
 
-  /* ── Filtering ──────────────────────────────────────── */
-  let activeFilter = "all";
-
+  /* ── Filtering (lookbook.html only) ─────────────────── */
   function applyFilter(cat) {
-    activeFilter = cat;
     $$(".filters__btn").forEach((btn) => {
       const on = btn.dataset.filter === cat;
       btn.classList.toggle("is-active", on);
       btn.setAttribute("aria-selected", String(on));
     });
-    $$(".tile", grid).forEach((tile) => {
-      tile.classList.toggle("is-hidden", cat !== "all" && tile.dataset.cat !== cat);
-    });
+    if (grid) {
+      $$(".tile", grid).forEach((tile) => {
+        tile.classList.toggle("is-hidden", cat !== "all" && tile.dataset.cat !== cat);
+      });
+    }
   }
 
   $$(".filters__btn").forEach((btn) =>
     btn.addEventListener("click", () => applyFilter(btn.dataset.filter))
   );
 
-  // Clicking a collection row filters the lookbook before jumping to it.
-  $$(".crow a[data-filter]").forEach((a) =>
-    a.addEventListener("click", () => applyFilter(a.dataset.filter))
-  );
+  // Arriving from a collection card: lookbook.html?c=bridal opens pre-filtered.
+  const wanted = new URLSearchParams(location.search).get("c");
+  if (wanted && $(`.filters__btn[data-filter="${wanted}"]`)) applyFilter(wanted);
 
   /* ── Lightbox ───────────────────────────────────────── */
   const lb = $("#lightbox");
@@ -306,7 +256,7 @@
     if (!tiles.length) return;
     lbIndex = (index + tiles.length) % tiles.length;
     const look = LOOKS[Number(tiles[lbIndex].dataset.index)];
-    lbImg.src = `assets/images/${look.img}.svg`;
+    lbImg.src = `assets/images/catalog/${look.img}`;
     lbImg.alt = `${look.name} — Prachi Bridal Hub`;
     lbCap.textContent = `${look.name} · ${look.tag}`;
   }
@@ -491,7 +441,6 @@
     requestAnimationFrame(() => {
       scrollQueued = false;
       onNavScroll();
-      updatePin();
       if (wa) wa.classList.toggle("is-in", window.scrollY > window.innerHeight * 0.6);
     });
   }

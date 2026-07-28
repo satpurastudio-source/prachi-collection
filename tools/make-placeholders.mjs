@@ -3,7 +3,7 @@
  *
  * These exist so the layout looks finished before real photography arrives.
  * To swap in a real photo: drop a .jpg with the SAME BASE NAME into
- * assets/images/ and update the `src` in index.html (or just overwrite the
+ * assets/images/catalog/ and update the `src` in index.html (or just overwrite the
  * .svg with a .jpg and change the extension). See assets/images/README.md.
  *
  *   node tools/make-placeholders.mjs
@@ -13,7 +13,7 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const OUT = resolve(dirname(fileURLToPath(import.meta.url)), "..", "assets", "images");
+const OUT = resolve(dirname(fileURLToPath(import.meta.url)), "..", "assets", "images", "catalog");
 
 const GOLD = "#C8A24A";
 const GOLD_SOFT = "#E4CE93";
@@ -132,4 +132,4 @@ mkdirSync(OUT, { recursive: true });
 for (const [name, spec] of Object.entries(FILES)) {
   writeFileSync(resolve(OUT, `${name}.svg`), svg(spec));
 }
-console.log(`Wrote ${Object.keys(FILES).length} placeholders to assets/images/`);
+console.log(`Wrote ${Object.keys(FILES).length} placeholders to assets/images/catalog/`);

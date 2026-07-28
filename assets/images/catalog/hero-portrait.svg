@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 960" width="720" height="960" role="img" aria-label="Bridal lehenga">
+  <defs>
+    <linearGradient id="bg-bridal" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0%" stop-color="#5A1220" />
+      <stop offset="100%" stop-color="#2A0610" />
+    </linearGradient>
+    <radialGradient id="glow-bridal" cx="50%" cy="40%" r="62%">
+      <stop offset="0%" stop-color="#E4CE93" stop-opacity="0.20" />
+      <stop offset="100%" stop-color="#E4CE93" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="jaali-bridal" width="26" height="26" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="26" height="26" fill="none" />
+      <rect x="9" y="9" width="8" height="8" fill="none" stroke="#C8A24A" stroke-width="0.7" opacity="0.16" />
+    </pattern>
+  </defs>
+
+  <rect width="720" height="960" fill="url(#bg-bridal)" />
+  <rect width="720" height="960" fill="url(#jaali-bridal)" />
+  <rect width="720" height="960" fill="url(#glow-bridal)" />
+
+  
+  <g stroke="#C8A24A" fill="none" stroke-width="2.40" opacity="0.85">
+    <path d="M 281.14285714285717 586.9714285714285
+             L 281.14285714285717 391.54285714285714
+             A 78.85714285714285 78.85714285714285 0 0 1 438.85714285714283 391.54285714285714
+             L 438.85714285714283 586.9714285714285 Z" opacity="0.55" />
+    <circle cx="360" cy="422.4" r="65.14285714285714" opacity="0.7" />
+    <circle cx="360" cy="422.4" r="22.285714285714285" opacity="0.9" />
+    <g opacity="0.5" stroke-width="1.54"><line x1="387.4" y1="422.4" x2="418.3" y2="422.4" /><line x1="383.8" y1="436.1" x2="410.5" y2="451.5" /><line x1="373.7" y1="446.2" x2="389.1" y2="472.9" /><line x1="360.0" y1="449.8" x2="360.0" y2="480.7" /><line x1="346.3" y1="446.2" x2="330.9" y2="472.9" /><line x1="336.2" y1="436.1" x2="309.5" y2="451.5" /><line x1="332.6" y1="422.4" x2="301.7" y2="422.4" /><line x1="336.2" y1="408.7" x2="309.5" y2="393.3" /><line x1="346.3" y1="398.6" x2="330.9" y2="371.9" /><line x1="360.0" y1="395.0" x2="360.0" y2="364.1" /><line x1="373.7" y1="398.6" x2="389.1" y2="371.9" /><line x1="383.8" y1="408.7" x2="410.5" y2="393.3" /></g>
+  </g>
+
+  <rect x="14" y="14" width="692" height="932" fill="none" stroke="#C8A24A" stroke-width="1" opacity="0.28" />
+
+  <text x="360" y="835.2" fill="#E4CE93" opacity="0.78"
+        font-family="Georgia, 'Times New Roman', serif" font-size="40"
+        letter-spacing="8.6" text-anchor="middle">BRIDAL</text>
+  <text x="360" y="888" fill="#C8A24A" opacity="0.45"
+        font-family="Helvetica, Arial, sans-serif" font-size="19"
+        letter-spacing="7.2" text-anchor="middle">PRACHI BRIDAL HUB</text>
+</svg>
