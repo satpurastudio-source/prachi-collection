@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Prachi Bridal Hub — Bridal &amp; Wedding Wear in Khandwa | Rent or Buy</title>
 
-<meta name="description" content="Prachi Collection, Khandwa — bridal lehengas, sherwanis, party wear, siders' outfits and wedding jewellery. Available on rent or to buy. Opposite S.N. College, Vaikunth Nagar. Call 89894 23736." />
+<meta name="description" content="Prachi Collection, Khandwa — established 2014. Bridal lehengas, sherwanis, party wear, siders' outfits and wedding jewellery. Available on rent or to buy. Opposite S.N. College, Vaikunth Nagar. Call 89894 23736." />
 <meta name="theme-color" content="#2A0610" />
 <meta name="author" content="Prachi Bridal Hub, Khandwa" />
 
@@ -26,7 +26,7 @@
   <style>
     /* Without JS nothing dismisses the loader or triggers the scroll reveals,
        so hand the visitor a plain, complete page instead of a blank screen. */
-    .loader, .cursor, .hover-card, .lightbox { display: none !important; }
+    .loader, .lightbox { display: none !important; }
     .reveal { opacity: 1 !important; transform: none !important; }
     .wa { transform: none !important; }
     /* The lookbook grid is built by JS — point people at Instagram instead. */
@@ -42,7 +42,8 @@
   "name": "Prachi Bridal Hub",
   "alternateName": "Prachi Collection",
   "slogan": "Where Royalty Meets Elegance",
-  "description": "Bridal wear, men's wear, party wear, siders' outfits and wedding jewellery — on rent or to buy — in Khandwa, Madhya Pradesh.",
+  "foundingDate": "2014",
+  "description": "Bridal wear, men's wear, party wear, siders' outfits and wedding jewellery — on rent or to buy — in Khandwa, Madhya Pradesh. Established 2014.",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Opposite S.N. College, Vaikunth Nagar",
@@ -79,8 +80,6 @@
   </div>
   <div class="loader__bar"><i></i></div>
 </div>
-
-<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__dot"></span><span class="cursor__ring"></span></div>
 
 <!-- ══════════════════ NAV ══════════════════ -->
 <header class="nav" id="nav">
@@ -144,7 +143,7 @@
 
   <div class="hero__inner">
     <div class="hero__copy">
-      <p class="eyebrow reveal">Khandwa &nbsp;·&nbsp; Madhya Pradesh</p>
+      <p class="eyebrow reveal">Khandwa &nbsp;·&nbsp; Est. 2014</p>
 
       <h1 class="hero__title" data-split>
         <span class="line">Where <em>Royalty</em></span>
@@ -214,8 +213,8 @@
       <h2 class="display reveal" data-delay="1">A wedding is one day.<br />Looking like <em>yourself</em><br />is the whole point.</h2>
       <p class="lede reveal" data-delay="2">
         Prachi Bridal Hub — known around town simply as Prachi Collection —
-        sits opposite S.N. College in Vaikunth Nagar. Under one roof: the bride,
-        the groom, and everyone standing beside them.
+        has stood opposite S.N. College in Vaikunth Nagar since 2014. Under one
+        roof: the bride, the groom, and everyone standing beside them.
       </p>
       <p class="reveal" data-delay="3">
         The racks turn over constantly, so what you see is what's being worn
@@ -226,6 +225,7 @@
       </p>
 
       <dl class="stats reveal" data-delay="4">
+        <div><dt data-since="2014">12</dt><dd>Years dressing<br />Khandwa</dd></div>
         <div><dt data-count="5">05</dt><dd>Collections<br />under one roof</dd></div>
         <div><dt data-count="2">02</dt><dd>Ways to wear it —<br />rent or buy</dd></div>
         <div><dt data-count="7">07</dt><dd>Days a week,<br />open from 1 PM</dd></div>
@@ -236,15 +236,19 @@
 
 <!-- ══════════════════ COLLECTIONS ══════════════════ -->
 <section class="collections section section--dark" id="collections">
-  <div class="wrap">
-    <header class="sec-head">
-      <p class="eyebrow reveal"><span class="num">02</span> Collections</p>
-      <h2 class="display display--xl reveal" data-delay="1">Five rooms,<br />one <em>occasion</em></h2>
-    </header>
+ <div class="pin" id="pinCollections">
+  <div class="pin__stage">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="eyebrow reveal"><span class="num">02</span> Collections</p>
+        <h2 class="display display--xl reveal" data-delay="1">Five rooms,<br />one <em>occasion</em></h2>
+      </header>
+    </div>
 
     <ul class="collections__list" id="collectionsList">
       <li class="crow reveal" data-img="assets/images/col-bridal.svg">
         <a href="#lookbook" data-filter="bridal">
+          <img class="crow__img" src="assets/images/col-bridal.svg" alt="" width="600" height="800" loading="lazy" />
           <span class="crow__no">01</span>
           <h3 class="crow__title">Bridal Wear</h3>
           <p class="crow__desc">Trending and traditional lehengas — Rajasthani, Gujarati, and the season's newest silhouettes. Non-bridal lehengas too.</p>
@@ -253,6 +257,7 @@
       </li>
       <li class="crow reveal" data-img="assets/images/col-men.svg">
         <a href="#lookbook" data-filter="men">
+          <img class="crow__img" src="assets/images/col-men.svg" alt="" width="600" height="800" loading="lazy" />
           <span class="crow__no">02</span>
           <h3 class="crow__title">Men's Wear</h3>
           <p class="crow__desc">Sherwanis, open jodhpuris, suits and blazers — with safa, crown, shoes and shawls to finish the look.</p>
@@ -261,6 +266,7 @@
       </li>
       <li class="crow reveal" data-img="assets/images/col-party.svg">
         <a href="#lookbook" data-filter="party">
+          <img class="crow__img" src="assets/images/col-party.svg" alt="" width="600" height="800" loading="lazy" />
           <span class="crow__no">03</span>
           <h3 class="crow__title">Party Wear</h3>
           <p class="crow__desc">Gowns, indo-westerns and cocktail pieces for sangeet, reception and every night in between.</p>
@@ -269,6 +275,7 @@
       </li>
       <li class="crow reveal" data-img="assets/images/col-siders.svg">
         <a href="#lookbook" data-filter="siders">
+          <img class="crow__img" src="assets/images/col-siders.svg" alt="" width="600" height="800" loading="lazy" />
           <span class="crow__no">04</span>
           <h3 class="crow__title">Siders</h3>
           <p class="crow__desc">For the family and friends standing beside the couple — coordinated outfits so the whole side photographs as one.</p>
@@ -277,6 +284,7 @@
       </li>
       <li class="crow reveal" data-img="assets/images/col-jewellery.svg">
         <a href="#lookbook" data-filter="jewellery">
+          <img class="crow__img" src="assets/images/col-jewellery.svg" alt="" width="600" height="800" loading="lazy" />
           <span class="crow__no">05</span>
           <h3 class="crow__title">Jewellery</h3>
           <p class="crow__desc">Full wedding sets — and with any dress rental, the jewellery comes bundled at no extra charge.</p>
@@ -284,9 +292,10 @@
         </a>
       </li>
     </ul>
-  </div>
 
-  <div class="hover-card" id="hoverCard" aria-hidden="true"><img src="" alt="" /></div>
+    <p class="rail-hint" id="railHint" aria-hidden="true"><i></i> <span>Swipe for more</span></p>
+  </div>
+ </div>
 </section>
 
 <!-- ══════════════════ LOOKBOOK ══════════════════ -->
@@ -484,16 +493,35 @@
     </div>
 
     <div class="foot__base">
-      <p>&copy; <span id="year">2026</span> Prachi Bridal Hub, Khandwa. All rights reserved.</p>
+      <p>&copy; <span id="year">2026</span> Prachi Bridal Hub, Khandwa. Est. 2014. All rights reserved.</p>
+      <p class="foot__credit"><i></i> Made by <b>Satpura Studio</b></p>
       <a href="#home" class="foot__up">Back to top ↑</a>
     </div>
   </div>
 </footer>
 
+<!-- Desktop: floating WhatsApp button. Phones get the thumb dock below instead. -->
 <a class="wa" href="https://wa.me/918989423736?text=Hello%20Prachi%20Bridal%20Hub%2C%20I%27d%20like%20to%20enquire%20about%20your%20collection." target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2A9.9 9.9 0 0 0 2.1 11.9a9.8 9.8 0 0 0 1.35 4.95L2 22l5.3-1.38a9.9 9.9 0 0 0 4.74 1.2h.01a9.9 9.9 0 0 0 9.94-9.9A9.9 9.9 0 0 0 12.04 2m0 18.15a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.16 8.16 0 1 1 6.98 3.86m4.5-6.13c-.24-.12-1.45-.72-1.68-.8s-.39-.12-.55.12-.63.8-.78.96-.29.18-.53.06a6.7 6.7 0 0 1-3.35-2.93c-.25-.43.25-.4.72-1.33a.45.45 0 0 0-.02-.43c-.06-.12-.55-1.33-.76-1.82s-.4-.42-.55-.43h-.47a.9.9 0 0 0-.65.3 2.75 2.75 0 0 0-.86 2.05 4.8 4.8 0 0 0 1 2.54 10.9 10.9 0 0 0 4.2 3.71c1.56.68 2.17.73 2.95.62.48-.07 1.45-.6 1.65-1.17s.2-1.07.14-1.17-.22-.18-.46-.3"/></svg>
   <span>WhatsApp</span>
 </a>
+
+<!-- Thumb-reachable actions, phones only. The three things a customer
+     actually wants: ring the shop, message it, or find it. -->
+<nav class="dock" aria-label="Quick contact">
+  <a class="dock__btn" href="tel:+918989423736">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.25 1z"/></svg>
+    <span>Call</span>
+  </a>
+  <a class="dock__btn dock__btn--wa" href="https://wa.me/918989423736?text=Hello%20Prachi%20Bridal%20Hub%2C%20I%27d%20like%20to%20enquire%20about%20your%20collection." target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2A9.9 9.9 0 0 0 2.1 11.9a9.8 9.8 0 0 0 1.35 4.95L2 22l5.3-1.38a9.9 9.9 0 0 0 4.74 1.2h.01a9.9 9.9 0 0 0 9.94-9.9A9.9 9.9 0 0 0 12.04 2m0 18.15a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.16 8.16 0 1 1 6.98 3.86m4.5-6.13c-.24-.12-1.45-.72-1.68-.8s-.39-.12-.55.12-.63.8-.78.96-.29.18-.53.06a6.7 6.7 0 0 1-3.35-2.93c-.25-.43.25-.4.72-1.33a.45.45 0 0 0-.02-.43c-.06-.12-.55-1.33-.76-1.82s-.4-.42-.55-.43h-.47a.9.9 0 0 0-.65.3 2.75 2.75 0 0 0-.86 2.05 4.8 4.8 0 0 0 1 2.54 10.9 10.9 0 0 0 4.2 3.71c1.56.68 2.17.73 2.95.62.48-.07 1.45-.6 1.65-1.17s.2-1.07.14-1.17-.22-.18-.46-.3"/></svg>
+    <span>WhatsApp</span>
+  </a>
+  <a class="dock__btn" href="https://www.google.com/maps/search/?api=1&amp;query=Prachi+Collection+Opposite+S.N.+College+Vaikunth+Nagar+Khandwa+Madhya+Pradesh+450001" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7m0 9.5A2.5 2.5 0 1 1 14.5 9 2.5 2.5 0 0 1 12 11.5"/></svg>
+    <span>Directions</span>
+  </a>
+</nav>
 
 <div class="lightbox" id="lightbox" hidden>
   <button class="lightbox__close" id="lbClose" aria-label="Close">&times;</button>

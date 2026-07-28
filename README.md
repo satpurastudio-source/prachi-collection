@@ -7,6 +7,12 @@ Plain HTML, CSS and JavaScript. **No build step, no framework, no CDN
 libraries** — deliberately, so it loads fast on mobile data and can be hosted
 anywhere for free.
 
+**Mobile first.** Most visitors arrive on a phone, so the phone layout is the
+base case: everything outside a media query *is* the mobile design, and the
+`min-width: 700px` / `min-width: 1040px` blocks add to it. Phones also get a
+fixed thumb dock (Call · WhatsApp · Directions) instead of the desktop
+floating button.
+
 ```
 index.html          the whole site — one page
 css/style.css       all styling
@@ -93,6 +99,27 @@ block. The address and map link are in the Visit section and the footer.
 - **`?shot=1`** — add it to the URL (`index.html?shot=1`) to freeze the page in
   its final state: no loader, no entrance animations, all images loaded. Useful
   for screenshots and for checking layout without waiting for scroll animations.
+- **The pinned Collections section.** That section holds still while the cards
+  travel sideways, then releases and the page scrolls on. It works by giving
+  `.pin` a pixel height of *one viewport + the horizontal overflow*, sticking
+  `.pin__stage` to the top, and mapping scroll progress onto a `translateX` of
+  the card track (`measurePin`/`updatePin` in `js/main.js`).
+  - It is **progressive**: JS adds `.is-pinned` to `#collections`. Without JS,
+    or with reduced motion, or if the cards already fit, the same markup stays
+    a plain horizontal swipe rail. Never make the content depend on pinning.
+  - `body` uses `overflow-x: clip`, **not** `hidden`. `hidden` turns body into
+    a scroll container, which silently breaks `position: sticky` everywhere.
+    If sticky ever stops working, check that first.
+  - It re-measures only when the viewport *width* changes — mobile browsers
+    fire `resize` on every URL-bar show/hide, and re-measuring on those makes
+    the section jump mid-scroll.
+- **`[hidden] { display: none !important; }`** near the top of the CSS is load
+  bearing. `.menu` and `.lightbox` set `display: flex/grid`, which otherwise
+  beats the browser's built-in `[hidden]` rule — leaving them as invisible
+  full-screen overlays that swallow every click on the page.
+- **Testing clicks:** use real pointer events or `document.elementFromPoint`.
+  Calling `element.click()` in the console bypasses hit-testing and will pass
+  even when an invisible overlay is covering the button.
 - **Accessibility** — text contrast was checked against WCAG AA. If you change
   a colour, re-check it; gold on the cream background is the easy trap (it only
   reaches ~2.2:1, which is why section numerals use oxblood on light sections).

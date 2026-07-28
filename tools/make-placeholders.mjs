@@ -104,11 +104,12 @@ const FILES = {
   // Sits behind text, so no baked-in caption.
   "groom-01": { w: 1440, h: 810, tone: "men", label: "Groom wear", plain: true },
 
-  "col-bridal": { w: 600, h: 800, tone: "bridal", label: "Bridal wear" },
-  "col-men": { w: 600, h: 800, tone: "men", label: "Men's wear" },
-  "col-party": { w: 600, h: 800, tone: "party", label: "Party wear" },
-  "col-siders": { w: 600, h: 800, tone: "siders", label: "Siders" },
-  "col-jewellery": { w: 600, h: 800, tone: "jewellery", label: "Jewellery" },
+  // Collection cards carry their own overlaid title, so no baked-in caption.
+  "col-bridal": { w: 600, h: 900, tone: "bridal", label: "Bridal wear", plain: true },
+  "col-men": { w: 600, h: 900, tone: "men", label: "Men's wear", plain: true },
+  "col-party": { w: 600, h: 900, tone: "party", label: "Party wear", plain: true },
+  "col-siders": { w: 600, h: 900, tone: "siders", label: "Siders", plain: true },
+  "col-jewellery": { w: 600, h: 900, tone: "jewellery", label: "Jewellery", plain: true },
 };
 
 // Lookbook tiles.

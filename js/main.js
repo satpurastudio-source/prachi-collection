@@ -173,64 +173,68 @@
     apply();
   }
 
-  /* ── Custom cursor ──────────────────────────────────── */
-  const cursor = $("#cursor");
-  if (cursor && window.matchMedia("(pointer: fine)").matches && !calm) {
-    const dot = $(".cursor__dot", cursor);
-    const ring = $(".cursor__ring", cursor);
-    let mx = window.innerWidth / 2, my = window.innerHeight / 2;
-    let rx = mx, ry = my;
+  /* ── Collections: pinned horizontal scroll ────────────────
+     The section sticks to the viewport while the card track is
+     translated sideways; once the track runs out, the section
+     releases and the page scrolls on normally.
 
-    window.addEventListener("mousemove", (e) => {
-      mx = e.clientX; my = e.clientY;
-      dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
-    }, { passive: true });
+     Falls back to the plain CSS swipe rail if motion is reduced or
+     the track already fits — nothing here is required for the
+     content to be reachable. */
+  const section = $("#collections");
+  const pin = $("#pinCollections");
+  const track = $("#collectionsList");
+  const hint = $("#railHint");
+  let pinDistance = 0;
+  let lastPinWidth = 0;
 
-    (function trail() {
-      rx += (mx - rx) * 0.16;
-      ry += (my - ry) * 0.16;
-      ring.style.transform = `translate(${rx.toFixed(1)}px, ${ry.toFixed(1)}px) translate(-50%, -50%)`;
-      requestAnimationFrame(trail);
-    })();
+  function measurePin() {
+    if (!pin || !track || calm) return;
 
-    document.addEventListener("mouseover", (e) => {
-      const hot = e.target.closest("a, button, .tile, .crow");
-      cursor.classList.toggle("is-hot", Boolean(hot));
-    });
+    // Measure in the un-pinned state so scrollWidth reports true content width.
+    section.classList.remove("is-pinned");
+    pin.style.height = "";
+    track.style.transform = "";
+
+    const overflow = track.scrollWidth - pin.clientWidth;
+    if (overflow <= 0) {
+      pinDistance = 0;
+      return; // Everything fits; leave it as a static row.
+    }
+
+    section.classList.add("is-pinned");
+    // Re-measure: pinned cards are sized to the stage height, so the
+    // track's width changes once .is-pinned applies.
+    pinDistance = Math.max(0, track.scrollWidth - pin.clientWidth);
+    if (pinDistance === 0) {
+      section.classList.remove("is-pinned");
+      return;
+    }
+
+    const stage = $(".pin__stage", pin);
+    pin.style.height = `${stage.offsetHeight + pinDistance}px`;
+    if (hint) $("span", hint).textContent = "Keep scrolling";
+    updatePin();
   }
 
-  /* ── Collections: image preview that follows the cursor ── */
-  const hoverCard = $("#hoverCard");
-  const hoverImg = hoverCard && $("img", hoverCard);
-  if (hoverCard && window.matchMedia("(pointer: fine)").matches && !calm) {
-    let hx = 0, hy = 0, cx = 0, cy = 0, live = false;
+  function updatePin() {
+    if (!pinDistance) return;
+    const top = pin.getBoundingClientRect().top;
+    const progress = Math.min(1, Math.max(0, -top / pinDistance));
+    track.style.transform = `translate3d(${(-progress * pinDistance).toFixed(1)}px, 0, 0)`;
+  }
 
-    $$(".crow").forEach((row) => {
-      row.addEventListener("mouseenter", () => {
-        hoverImg.src = row.dataset.img;
-        hoverImg.alt = "";
-        hoverCard.classList.add("is-on");
-        live = true;
-      });
-      row.addEventListener("mouseleave", () => {
-        hoverCard.classList.remove("is-on");
-        live = false;
-      });
+  if (pin) {
+    measurePin();
+    // Re-measure only when the width actually changes: mobile browsers fire
+    // resize on every URL-bar show/hide, and rebuilding on those causes jumps.
+    lastPinWidth = window.innerWidth;
+    window.addEventListener("resize", () => {
+      if (window.innerWidth === lastPinWidth) return;
+      lastPinWidth = window.innerWidth;
+      measurePin();
     });
-
-    window.addEventListener("mousemove", (e) => { hx = e.clientX; hy = e.clientY; }, { passive: true });
-
-    (function follow() {
-      if (live) {
-        cx += (hx - cx) * 0.12;
-        cy += (hy - cy) * 0.12;
-        hoverCard.style.left = `${cx.toFixed(1)}px`;
-        hoverCard.style.top = `${cy.toFixed(1)}px`;
-      } else {
-        cx = hx; cy = hy;
-      }
-      requestAnimationFrame(follow);
-    })();
+    window.addEventListener("load", measurePin);
   }
 
   /* ── Lookbook grid ──────────────────────────────────── */
@@ -348,6 +352,27 @@
       if (e.key === "ArrowLeft") showAt(lbIndex - 1);
       if (e.key === "ArrowRight") showAt(lbIndex + 1);
     });
+
+    // Swipe left/right to move through the gallery; swipe down to dismiss.
+    let sx = 0, sy = 0, tracking = false;
+    lb.addEventListener("touchstart", (e) => {
+      if (e.touches.length !== 1) return;
+      sx = e.touches[0].clientX;
+      sy = e.touches[0].clientY;
+      tracking = true;
+    }, { passive: true });
+
+    lb.addEventListener("touchend", (e) => {
+      if (!tracking) return;
+      tracking = false;
+      const dx = e.changedTouches[0].clientX - sx;
+      const dy = e.changedTouches[0].clientY - sy;
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) {
+        showAt(dx < 0 ? lbIndex + 1 : lbIndex - 1);
+      } else if (dy > 80 && Math.abs(dy) > Math.abs(dx)) {
+        closeLightbox();
+      }
+    }, { passive: true });
   }
 
   /* ── Opening hours, in India Standard Time ──────────── */
@@ -418,6 +443,14 @@
   paintStatus();
   setInterval(paintStatus, 60_000);
 
+  /* ── Years in business ──────────────────────────────────
+     Derived from the founding year so it never goes stale. */
+  $$("[data-since]").forEach((el) => {
+    const years = new Date().getFullYear() - Number(el.dataset.since);
+    el.dataset.count = String(years);
+    el.textContent = String(years).padStart(2, "0");
+  });
+
   /* ── Count-up stats ─────────────────────────────────── */
   const counters = $$("[data-count]");
   if (counters.length) {
@@ -451,9 +484,16 @@
 
   /* ── WhatsApp button reveals past the hero ──────────── */
   const wa = $(".wa");
+  let scrollQueued = false;
   function onScroll() {
-    onNavScroll();
-    if (wa) wa.classList.toggle("is-in", window.scrollY > window.innerHeight * 0.6);
+    if (scrollQueued) return;
+    scrollQueued = true;
+    requestAnimationFrame(() => {
+      scrollQueued = false;
+      onNavScroll();
+      updatePin();
+      if (wa) wa.classList.toggle("is-in", window.scrollY > window.innerHeight * 0.6);
+    });
   }
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();

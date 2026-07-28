@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img" aria-label="Party wear">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="600" height="900" role="img" aria-label="Party wear">
   <defs>
     <linearGradient id="bg-party" x1="0" y1="0" x2="0.6" y2="1">
       <stop offset="0%" stop-color="#6B2340" />
@@ -14,27 +14,21 @@
     </pattern>
   </defs>
 
-  <rect width="600" height="800" fill="url(#bg-party)" />
-  <rect width="600" height="800" fill="url(#jaali-party)" />
-  <rect width="600" height="800" fill="url(#glow-party)" />
+  <rect width="600" height="900" fill="url(#bg-party)" />
+  <rect width="600" height="900" fill="url(#jaali-party)" />
+  <rect width="600" height="900" fill="url(#glow-party)" />
 
   
   <g stroke="#C8A24A" fill="none" stroke-width="2.00" opacity="0.85">
-    <path d="M 234.28571428571428 489.1428571428571
-             L 234.28571428571428 326.2857142857143
-             A 65.71428571428572 65.71428571428572 0 0 1 365.7142857142857 326.2857142857143
-             L 365.7142857142857 489.1428571428571 Z" opacity="0.55" />
-    <circle cx="300" cy="352" r="54.285714285714285" opacity="0.7" />
-    <circle cx="300" cy="352" r="18.571428571428573" opacity="0.9" />
-    <g opacity="0.5" stroke-width="1.29"><line x1="322.9" y1="352.0" x2="348.6" y2="352.0" /><line x1="319.8" y1="363.4" x2="342.1" y2="376.3" /><line x1="311.4" y1="371.8" x2="324.3" y2="394.1" /><line x1="300.0" y1="374.9" x2="300.0" y2="400.6" /><line x1="288.6" y1="371.8" x2="275.7" y2="394.1" /><line x1="280.2" y1="363.4" x2="257.9" y2="376.3" /><line x1="277.1" y1="352.0" x2="251.4" y2="352.0" /><line x1="280.2" y1="340.6" x2="257.9" y2="327.7" /><line x1="288.6" y1="332.2" x2="275.7" y2="309.9" /><line x1="300.0" y1="329.1" x2="300.0" y2="303.4" /><line x1="311.4" y1="332.2" x2="324.3" y2="309.9" /><line x1="319.8" y1="340.6" x2="342.1" y2="327.7" /></g>
+    <path d="M 234.28571428571428 533.1428571428571
+             L 234.28571428571428 370.2857142857143
+             A 65.71428571428572 65.71428571428572 0 0 1 365.7142857142857 370.2857142857143
+             L 365.7142857142857 533.1428571428571 Z" opacity="0.55" />
+    <circle cx="300" cy="396" r="54.285714285714285" opacity="0.7" />
+    <circle cx="300" cy="396" r="18.571428571428573" opacity="0.9" />
+    <g opacity="0.5" stroke-width="1.29"><line x1="322.9" y1="396.0" x2="348.6" y2="396.0" /><line x1="319.8" y1="407.4" x2="342.1" y2="420.3" /><line x1="311.4" y1="415.8" x2="324.3" y2="438.1" /><line x1="300.0" y1="418.9" x2="300.0" y2="444.6" /><line x1="288.6" y1="415.8" x2="275.7" y2="438.1" /><line x1="280.2" y1="407.4" x2="257.9" y2="420.3" /><line x1="277.1" y1="396.0" x2="251.4" y2="396.0" /><line x1="280.2" y1="384.6" x2="257.9" y2="371.7" /><line x1="288.6" y1="376.2" x2="275.7" y2="353.9" /><line x1="300.0" y1="373.1" x2="300.0" y2="347.4" /><line x1="311.4" y1="376.2" x2="324.3" y2="353.9" /><line x1="319.8" y1="384.6" x2="342.1" y2="371.7" /></g>
   </g>
 
-  <rect x="14" y="14" width="572" height="772" fill="none" stroke="#C8A24A" stroke-width="1" opacity="0.28" />
+  <rect x="14" y="14" width="572" height="872" fill="none" stroke="#C8A24A" stroke-width="1" opacity="0.28" />
 
-  <text x="300" y="696" fill="#E4CE93" opacity="0.78"
-        font-family="Georgia, 'Times New Roman', serif" font-size="33"
-        letter-spacing="7.2" text-anchor="middle">PARTY</text>
-  <text x="300" y="740" fill="#C8A24A" opacity="0.45"
-        font-family="Helvetica, Arial, sans-serif" font-size="16"
-        letter-spacing="6.0" text-anchor="middle">PRACHI BRIDAL HUB</text>
 </svg>
